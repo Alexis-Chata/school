@@ -15,7 +15,9 @@ class CreateAnioAcademicosTable extends Migration
     {
         Schema::create('anio_academicos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->year('name');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
         });
     }
 

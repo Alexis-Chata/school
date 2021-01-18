@@ -15,7 +15,17 @@ class CreateClasesTable extends Migration
     {
         Schema::create('clases', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('horarios_id');
+            $table->date('fecha');
+            $table->string('name');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
+
+            $table->foreign('horarios_id')
+                ->references('id')
+                ->on('horarios')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

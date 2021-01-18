@@ -15,7 +15,22 @@ class CreateAsistenciasTable extends Migration
     {
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('clases_id');
+            $table->unsignedBigInteger('users_id');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
+
+            $table->foreign('clases_id')
+                ->references('id')
+                ->on('clases')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('users_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
