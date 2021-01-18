@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnioAcademicoController;
+use App\Http\Controllers\GradoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +24,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('anio_academico', AnioAcademicoController::class)->except(['index', 'show']);
+Route::resource('grado', GradoController::class)->except(['index', 'show']);
