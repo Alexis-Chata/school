@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnioAcademicoController;
 use App\Http\Controllers\DiaSemanaController;
+use App\Http\Controllers\EvaluacionController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\SeccionController;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,4 @@ Route::resource('anio_academico', AnioAcademicoController::class)->except(['inde
 Route::resource('grado', GradoController::class)->except(['index', 'show']);
 Route::resource('seccion', SeccionController::class)->except(['index', 'show']);
 Route::resource('dia_semana', DiaSemanaController::class)->except(['index', 'show']);
+Route::resource('evaluacion', EvaluacionController::class)->except(['index', 'show']);
