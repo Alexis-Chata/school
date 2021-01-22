@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnioAcademicoController;
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DiaSemanaController;
 use App\Http\Controllers\EvaluacionController;
 use App\Http\Controllers\GradoController;
@@ -31,3 +32,4 @@ Route::resource('grado', GradoController::class)->except(['index', 'show']);
 Route::resource('seccion', SeccionController::class)->except(['index', 'show']);
 Route::resource('dia_semana', DiaSemanaController::class)->except(['index', 'show']);
 Route::resource('evaluacion', EvaluacionController::class)->except(['index', 'show']);
+Route::resource('curso', CursoController::class)->except(['index', 'show']);

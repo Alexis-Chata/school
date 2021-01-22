@@ -54,11 +54,13 @@ class AnioAcademicoController extends Controller
     {
         $messages = [
             'name.required' => 'El año academico es requerido',
+            'name.unique' => 'El año academico debe de ser unico',
             'name.min' => 'minimo 4 digitos',
+            'name.max' => 'maximo 4 digitos',
         ];
 
         $rules = [
-            'name' => 'required|min:4|unique:anio_academicos,name,except,id',
+            'name' => 'required|min:4|max:4|unique:anio_academicos,name,except,id',
         ];
 
         return array($rules, $messages);
@@ -100,7 +102,7 @@ class AnioAcademicoController extends Controller
     public function update(Request $request, Anio_academico $anio_academico)
     {
         $request->validate([
-            'name' => "required|min:4|unique:anio_academicos,name,$anio_academico->id",
+            'name' => "required|min:4|max:4|unique:anio_academicos,name,$anio_academico->id",
         ]);
 
         if ($request->input('name')) {

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anio_academico;
 use App\Models\Curso;
+use App\Models\Grado;
 use Illuminate\Http\Request;
 
 class CursoController extends Controller
@@ -24,7 +26,13 @@ class CursoController extends Controller
      */
     public function create()
     {
-        //
+        $btn_name = 'Registrar';
+        $action = route('curso.store');
+        $curso = new Curso();
+        $cursos = Curso::all();
+        $anios = Anio_academico::all();
+        $grados = Grado::all();
+        return view('curso.crear')->with(compact('action', 'curso', 'cursos', 'anios', 'grados'));
     }
 
     /**
@@ -35,7 +43,29 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        list($rules, $messages) = $this->_rules();
+        $this->validate($request, $rules, $messages);
+
+        if ($request->input('name')) {
+            $curso = new Curso($request->all());
+            $curso->name = strtolower($request->input('name'));
+            $curso->save();
+            return redirect()->route('curso.create')->with('info','El curso se creo con exito');
+        }
+        return redirect()->route('curso.create');
+    }
+    #reglas de validacion
+    private function _rules()
+    {
+        $messages = [
+            'name.required' => 'El curso es requerido',
+        ];
+
+        $rules = [
+            'name' => 'required',
+        ];
+
+        return array($rules, $messages);
     }
 
     /**
@@ -57,7 +87,13 @@ class CursoController extends Controller
      */
     public function edit(Curso $curso)
     {
-        //
+        $btn_name = 'Actualizar';
+        $put = True;
+        $anios = Anio_academico::all();
+        $grados = Grado::all();
+        $action = route('curso.update', $curso);
+
+        return view('curso.actualizar')->with(compact('curso', 'action', 'put', 'btn_name','anios', 'grados'));
     }
 
     /**
@@ -69,7 +105,21 @@ class CursoController extends Controller
      */
     public function update(Request $request, Curso $curso)
     {
-        //
+        $request->validate([
+            'name' => "required",
+            'grados_id' => "required",
+            'anio_academicos_id' => "required",
+        ]);
+
+        if ($request->input('name')) {
+            $curso->name = $request->input('name');
+            $curso->grados_id = $request->get('grados_id');
+            $curso->anio_academicos_id = $request->get('anio_academicos_id');
+            $curso->save();
+
+            return redirect()->route('curso.create')->with('info','El curso se actualizo con exito');
+        }
+        return redirect()->route('curso.create');
     }
 
     /**
@@ -80,6 +130,7 @@ class CursoController extends Controller
      */
     public function destroy(Curso $curso)
     {
-        //
+        $curso->delete();
+        return redirect()->route('curso.create')->with('info','El curso se elimino con exito');
     }
 }

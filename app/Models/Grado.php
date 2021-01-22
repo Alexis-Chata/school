@@ -9,4 +9,9 @@ class Grado extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
+
+    public function cursos()
+    {
+        return $this->hasMany(Curso::class);
+    }
 }

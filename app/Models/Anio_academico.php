@@ -14,4 +14,9 @@ class Anio_academico extends Model
     {
         return 'name';
     }
+
+    public function cursos()
+    {
+        return $this->hasMany(Curso::class);
+    }
 }
