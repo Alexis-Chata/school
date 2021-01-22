@@ -59,10 +59,14 @@ class CursoController extends Controller
     {
         $messages = [
             'name.required' => 'El curso es requerido',
+            'grados_id.required' => 'El grado es requerido',
+            'anio_academicos_id.required' => 'El año es requerido',
         ];
 
         $rules = [
             'name' => 'required',
+            'grados_id' => 'required',
+            'anio_academicos_id' => 'required',
         ];
 
         return array($rules, $messages);

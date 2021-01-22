@@ -5,6 +5,7 @@ use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DiaSemanaController;
 use App\Http\Controllers\EvaluacionController;
 use App\Http\Controllers\GradoController;
+use App\Http\Controllers\GrupoAcademicoController;
 use App\Http\Controllers\SeccionController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,4 @@ Route::resource('seccion', SeccionController::class)->except(['index', 'show']);
 Route::resource('dia_semana', DiaSemanaController::class)->except(['index', 'show']);
 Route::resource('evaluacion', EvaluacionController::class)->except(['index', 'show']);
 Route::resource('curso', CursoController::class)->except(['index', 'show']);
+Route::resource('grupo_academico', GrupoAcademicoController::class)->except(['index', 'show']);

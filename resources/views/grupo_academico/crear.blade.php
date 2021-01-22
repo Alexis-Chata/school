@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Crear Curso')
+@section('title', 'Crear Grupo Academico')
 
 @section('content_header')
     <div class="container">
-        <h1 class="mt-3">Crear Curso</h1>
+        <h1 class="mt-3">Crear Grupo Academico</h1>
     </div>
 @stop
 
@@ -14,14 +14,14 @@
 
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <p><a href="{{route('curso.create')}}">Regresar</a></p>
+            <p><a href="{{route('grupo_academico.create')}}">Regresar</a></p>
             @if (session('info'))
                 <div class="alert alert-success">
                     <strong>{{session('info')}}</strong>
                 </div>
             @endif
             <section class="content">
-                @include('curso._form')
+                @include('grupo_academico._form')
             </section>
         </div>
     </main>
@@ -33,6 +33,7 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Grado</th>
+                    <th>Seccion</th>
                     <th>Año Academico</th>
                     <th>Created_at</th>
                     <th>Update_at</th>
@@ -45,16 +46,17 @@
                     //print_r($anio);
                 @endphp
 
-                @foreach ($cursos as $value)
+                @foreach ($grupo_academicos as $value)
                 <tr>
                     <td>{{ $value->id }}</td>
                     <td>{{ $value->name }}</td>
                     <td>{{ $value->grados->name }}</td>
+                    <td>{{ $value->seccions->name }}</td>
                     <td>{{ $value->anio_academicos->name }}</td>
                     <td>{{ $value->created_at }}</td>
                     <td>{{ $value->updated_at }}</td>
-                    <td class="text-center"><a class="btn btn-primary btn-sm" href="{{ route('curso.edit',$value) }}">Editar</a></td>
-                    <td class="text-center"><form action="{{ route('curso.destroy',$value)}}" method="POST">
+                    <td class="text-center"><a class="btn btn-primary btn-sm" href="{{ route('grupo_academico.edit',$value) }}">Editar</a></td>
+                    <td class="text-center"><form action="{{ route('grupo_academico.destroy',$value)}}" method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>

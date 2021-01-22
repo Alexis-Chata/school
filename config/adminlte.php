@@ -253,6 +253,10 @@ return [
                     'text' => 'Curso',
                     'url'  => 'curso/crear',
                 ],
+                [
+                    'text' => 'Grupo Academico',
+                    'url'  => 'grupo_academico/crear',
+                ],
             ],
         ],
         [
