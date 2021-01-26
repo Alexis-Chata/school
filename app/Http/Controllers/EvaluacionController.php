@@ -28,7 +28,7 @@ class EvaluacionController extends Controller
         $action = route('evaluacion.store');
         $evaluacion = new Evaluacion();
         $evaluacions = Evaluacion::all();
-        return view('evaluacion.crear')->with(compact('action', 'evaluacion', 'evaluacions'));
+        return view('evaluacion.crear')->with(compact('action', 'evaluacion', 'evaluacions', 'btn_name'));
     }
 
     /**
@@ -58,7 +58,7 @@ class EvaluacionController extends Controller
         ];
 
         $rules = [
-            'name' => 'required',
+            'name' => 'required|unique:evaluacions,name,except,id',
         ];
 
         return array($rules, $messages);

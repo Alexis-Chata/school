@@ -28,7 +28,7 @@ class DiaSemanaController extends Controller
         $action = route('dia_semana.store');
         $dia_semana = new Dia_semana();
         $dia_semanas = Dia_semana::all();
-        return view('dia_semana.create')->with(compact('action', 'dia_semana', 'dia_semanas'));
+        return view('dia_semana.create')->with(compact('action', 'dia_semana', 'dia_semanas', 'btn_name'));
     }
 
     /**

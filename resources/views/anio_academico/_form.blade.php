@@ -12,7 +12,7 @@
       <label class="m-0">Año academico: </label>
     </div>
     <div class="col-auto">
-      <input type="text" name="name" class="form-control" placeholder="Año academico" value="{{ $anio_academico->name }}" autofocus>
+      <input type="number" name="name" class="form-control" placeholder="Año academico" value="{{ $anio_academico->name }}" autofocus>
     </div>
     <div class="col-auto">
         <button type="submit" class="btn btn-primary">{{ $btn_name }}</button>

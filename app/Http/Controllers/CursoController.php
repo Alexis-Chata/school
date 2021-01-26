@@ -6,6 +6,8 @@ use App\Models\Anio_academico;
 use App\Models\Curso;
 use App\Models\Grado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class CursoController extends Controller
 {
@@ -32,7 +34,7 @@ class CursoController extends Controller
         $cursos = Curso::all();
         $anios = Anio_academico::all();
         $grados = Grado::all();
-        return view('curso.crear')->with(compact('action', 'curso', 'cursos', 'anios', 'grados'));
+        return view('curso.crear')->with(compact('action', 'curso','btn_name', 'cursos', 'anios', 'grados'));
     }
 
     /**

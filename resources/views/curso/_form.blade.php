@@ -16,7 +16,7 @@
     </div>
     <div class="col-auto">
         <select name="grados_id" class="form-control">
-            <option value="">--SELECCIONAR--</option>
+            <option value="">-- Grado --</option>
             @foreach ($grados as $value)
             <option value="{{$value->id}}" {{ $curso->grados_id==$value->id ? "selected" : ""}}>{{$value->name}}</option>
             @endforeach
@@ -24,14 +24,14 @@
     </div>
     <div class="col-auto">
         <select name="anio_academicos_id" class="form-control">
-            <option value="">--&nbsp;SELECCIONAR&nbsp;--</option>
+            <option value="">--&nbsp;Año&nbsp;--</option>
             @foreach ($anios as $value)
             <option value="{{$value->id}}" {{ $curso->anio_academicos_id==$value->id ? "selected" : (date("Y") == $value->name ? "selected" : "") }}>{{$value->name}}</option>
             @endforeach
         </select>
     </div>
     <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">{{ $btn_name }}</button>
     </div>
     @if (!empty($put))
         <input type="hidden" name="_method" value="PUT">

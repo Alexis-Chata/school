@@ -7,6 +7,7 @@ use App\Models\Grado;
 use App\Models\Grupo_academico;
 use App\Models\Seccion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GrupoAcademicoController extends Controller
 {
@@ -34,7 +35,7 @@ class GrupoAcademicoController extends Controller
         $anios = Anio_academico::all();
         $grados = Grado::all();
         $seccions = Seccion::all();
-        return view('grupo_academico.crear')->with(compact('action', 'grupo_academico', 'grupo_academicos', 'anios', 'grados', 'seccions'));
+        return view('grupo_academico.crear')->with(compact('action', 'grupo_academico', 'grupo_academicos', 'btn_name', 'anios', 'grados', 'seccions'));
     }
 
     /**
@@ -45,16 +46,23 @@ class GrupoAcademicoController extends Controller
      */
     public function store(Request $request)
     {
-        list($rules, $messages) = $this->_rules();
-        $this->validate($request, $rules, $messages);
+        $existe_grupo=DB::table('grupo_academicos')
+                ->where('anio_academicos_id', $request->get('anio_academicos_id'))
+                ->where('grados_id', $request->get('grados_id'))
+                ->where('seccions_id', $request->get('seccions_id'))
+                ->get();
+        if(!isset($existe_grupo[0])){
 
-        if ($request->input('name')) {
+            list($rules, $messages) = $this->_rules();
+            $this->validate($request, $rules, $messages);
             $grupo_academico = new Grupo_academico($request->all());
             $grupo_academico->name = strtolower($request->input('name'));
             $grupo_academico->save();
             return redirect()->route('grupo_academico.create')->with('info','El grupo academico se creo con exito');
+
+        }else{
+            return redirect()->route('grupo_academico.create')->with('info','El grupo academico ya existe');
         }
-        return redirect()->route('grupo_academico.create');
     }
     #reglas de validacion
     private function _rules()
@@ -114,23 +122,32 @@ class GrupoAcademicoController extends Controller
      */
     public function update(Request $request, Grupo_academico $grupo_academico)
     {
-        $request->validate([
-            'name' => "required",
-            'grados_id' => "required",
-            'seccions_id' => "required",
-            'anio_academicos_id' => "required",
-        ]);
+        $existe_grupo=DB::table('grupo_academicos')
+                ->where('anio_academicos_id', $request->get('anio_academicos_id'))
+                ->where('grados_id', $request->get('grados_id'))
+                ->where('seccions_id', $request->get('seccions_id'))
+                ->get();
+        if(!isset($existe_grupo[0])){
+            $request->validate([
+                'name' => "required",
+                'grados_id' => "required",
+                'seccions_id' => "required",
+                'anio_academicos_id' => "required",
+            ]);
 
-        if ($request->input('name')) {
-            $grupo_academico->name = $request->input('name');
-            $grupo_academico->grados_id = $request->get('grados_id');
-            $grupo_academico->seccions_id = $request->get('seccions_id');
-            $grupo_academico->anio_academicos_id = $request->get('anio_academicos_id');
-            $grupo_academico->save();
+            if ($request->input('name')) {
+                $grupo_academico->name = $request->input('name');
+                $grupo_academico->grados_id = $request->get('grados_id');
+                $grupo_academico->seccions_id = $request->get('seccions_id');
+                $grupo_academico->anio_academicos_id = $request->get('anio_academicos_id');
+                $grupo_academico->save();
 
-            return redirect()->route('grupo_academico.create')->with('info','El grupo academico se actualizo con exito');
+                return redirect()->route('grupo_academico.create')->with('info','El grupo academico se actualizo con exito');
+            }
+            return redirect()->route('grupo_academico.create');
+        }else{
+            return redirect()->route('grupo_academico.create')->with('info','El grupo academico ya existe');
         }
-        return redirect()->route('grupo_academico.create');
     }
 
     /**

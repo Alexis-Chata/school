@@ -15,7 +15,7 @@ class CursoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('dia_semanas')->delete();
+        DB::table('cursos')->delete();
 
         // 1
         $tabla = new Curso();
