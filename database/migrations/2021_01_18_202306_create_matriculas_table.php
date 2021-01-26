@@ -16,7 +16,6 @@ class CreateMatriculasTable extends Migration
         Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('grupo_academicos_id');
-            $table->unsignedBigInteger('cursos_id');
             $table->unsignedBigInteger('users_id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
@@ -24,12 +23,6 @@ class CreateMatriculasTable extends Migration
             $table->foreign('grupo_academicos_id')
                 ->references('id')
                 ->on('grupo_academicos')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->foreign('cursos_id')
-                ->references('id')
-                ->on('cursos')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 

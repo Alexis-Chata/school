@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
+use App\Models\Dia_semana;
 use Illuminate\Database\Seeder;
 
 class DiaSemanaSeeder extends Seeder
@@ -13,6 +15,21 @@ class DiaSemanaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('dia_semanas')->delete();
+
+        // 1
+        $tabla = new Dia_semana();
+        $tabla->name = 'lunes';
+        $tabla->save();
+
+        // 2
+        $tabla = new Dia_semana();
+        $tabla->name = 'martes';
+        $tabla->save();
+
+        // 3
+        $tabla = new Dia_semana();
+        $tabla->name = 'miercoles';
+        $tabla->save();
     }
 }
