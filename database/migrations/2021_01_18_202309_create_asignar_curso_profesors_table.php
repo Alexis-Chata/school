@@ -16,6 +16,7 @@ class CreateAsignarCursoProfesorsTable extends Migration
         Schema::create('asignar_curso_profesors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('cursos_id');
             $table->unsignedBigInteger('grupo_academicos_id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
@@ -26,11 +27,19 @@ class CreateAsignarCursoProfesorsTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
+            $table->foreign('cursos_id')
+            ->references('id')
+            ->on('cursos')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
             $table->foreign('grupo_academicos_id')
                 ->references('id')
                 ->on('grupo_academicos')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+
+            $table->unique(['users_id', 'cursos_id', 'grupo_academicos_id'], 'asignar_curso_profesors_unicos');
         });
     }
 

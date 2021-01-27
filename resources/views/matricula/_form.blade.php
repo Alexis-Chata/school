@@ -28,7 +28,7 @@
         </select>
     </div>
     <div class="col-auto">
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">{{ $btn_name }}</button>
     </div>
     @if (!empty($put))
         <input type="hidden" name="_method" value="PUT">

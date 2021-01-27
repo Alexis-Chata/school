@@ -31,10 +31,9 @@ class MatriculaController extends Controller
         $action = route('matricula.store');
         $matricula = new Matricula();
         $matriculas = Matricula::all();
-        //$user = new User;
         $users = User::all();
         $grupo_academicos = Grupo_academico::all();
-        return view('matricula.crear')->with(compact('action', 'matricula', 'matriculas', 'grupo_academicos', 'users'));
+        return view('matricula.crear')->with(compact('action', 'matricula', 'matriculas', 'grupo_academicos', 'users', 'btn_name'));
     }
 
     /**
@@ -120,7 +119,7 @@ class MatriculaController extends Controller
     {
         $existe_matricula=Matricula::all()
                 ->where('users_id', $request->get('users_id'))->whereNotIn('id',[$matricula->id]);
-        $año_id=Grupo_academico::find($request->get('grupo_academicos_id',['id']));
+        $año_id=Grupo_academico::find($request->get('grupo_academicos_id'),['id']);
         $años_matriculados=[];
         foreach ($existe_matricula as $value) {
             $años_matriculados[]=$value->grupo_academicos->anio_academicos_id;

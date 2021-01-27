@@ -28,7 +28,7 @@ class SeccionController extends Controller
         $action = route('seccion.store');
         $seccion = new Seccion();
         $seccions = Seccion::all();
-        return view('seccion.crear')->with(compact('action', 'seccion', 'seccions'));
+        return view('seccion.crear')->with(compact('action', 'seccion', 'seccions', 'btn_name'));
     }
 
     /**
