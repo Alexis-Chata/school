@@ -261,6 +261,10 @@ return [
                     'text' => 'Matricula',
                     'url'  => 'matricula/crear',
                 ],
+                [
+                    'text' => 'Asignar Curso',
+                    'url'  => 'asignar_curso_profesor/crear',
+                ],
             ],
         ],
         [
