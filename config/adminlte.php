@@ -265,6 +265,10 @@ return [
                     'text' => 'Asignar Curso',
                     'url'  => 'asignar_curso_profesor/crear',
                 ],
+                [
+                    'text' => 'Horarios',
+                    'url'  => 'horario/crear',
+                ],
             ],
         ],
         [

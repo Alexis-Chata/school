@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Asignar_curso_profesor;
+use App\Models\Dia_semana;
 use App\Models\Horario;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,13 @@ class HorarioController extends Controller
      */
     public function create()
     {
-        //
+        $btn_name = 'Registrar';
+        $action = route('horario.store');
+        $horario = new Horario();
+        $horarios = Horario::all();
+        $cursos = Asignar_curso_profesor::all();
+        $dia_semanas = Dia_semana::all();
+        return view('horario.crear')->with(compact('btn_name', 'action', 'horario', 'horarios', 'cursos', 'dia_semanas'));
     }
 
     /**
