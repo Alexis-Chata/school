@@ -27,11 +27,11 @@
     <script>
         $(document).ready(function() {
 
-            $('select[name=grupo_academicos_id]').select2({
+            $('select[name=dia_semanas_id]').select2({
                 language: "es",
             });
 
-            $('select[name=users_id]').select2({
+            $('select[name=asignar_curso_profesors_id]').select2({
                 language: "es",
             });
 

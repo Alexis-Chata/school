@@ -40,4 +40,4 @@ Route::resource('curso', CursoController::class)->except(['index', 'show']);
 Route::resource('grupo_academico', GrupoAcademicoController::class)->except(['index', 'show']);
 Route::resource('matricula', MatriculaController::class)->except(['index', 'show']);
 Route::resource('asignar_curso_profesor', AsignarCursoProfesorController::class)->except(['index', 'show']);
-Route::resource('horario', HorarioController::class)->except(['index', 'show']);
+Route::resource('horario', HorarioController::class)->except(['show']);

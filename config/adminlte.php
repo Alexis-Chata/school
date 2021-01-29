@@ -267,7 +267,7 @@ return [
                 ],
                 [
                     'text' => 'Horarios',
-                    'url'  => 'horario/crear',
+                    'url'  => 'horario/',
                 ],
             ],
         ],

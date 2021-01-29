@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignar_curso_profesor;
 use App\Models\Dia_semana;
+use App\Models\Grupo_academico;
 use App\Models\Horario;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,12 @@ class HorarioController extends Controller
      */
     public function index()
     {
-        //
+        $horarios = Horario::all();
+        $asignar_curso_profesors = Asignar_curso_profesor::all();
+        $dia_semanas = Dia_semana::all();
+        $grupo_academicos = Grupo_academico::all();
+
+        return view('horario.index')->with(compact('horarios', 'asignar_curso_profesors', 'dia_semanas', 'grupo_academicos'));
     }
 
     /**
@@ -30,9 +36,11 @@ class HorarioController extends Controller
         $action = route('horario.store');
         $horario = new Horario();
         $horarios = Horario::all();
-        $cursos = Asignar_curso_profesor::all();
+        $asignar_curso_profesors = Asignar_curso_profesor::all();
         $dia_semanas = Dia_semana::all();
-        return view('horario.crear')->with(compact('btn_name', 'action', 'horario', 'horarios', 'cursos', 'dia_semanas'));
+        $grupo_academicos = Grupo_academico::all();
+
+        return view('horario.crear')->with(compact('btn_name', 'action', 'horario', 'horarios', 'asignar_curso_profesors', 'dia_semanas', 'grupo_academicos'));
     }
 
     /**
@@ -43,7 +51,7 @@ class HorarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        var_dump($request->get('dia_semanas'));
     }
 
     /**
