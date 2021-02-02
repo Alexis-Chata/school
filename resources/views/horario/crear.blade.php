@@ -29,7 +29,7 @@
                 <table id="tbl_anio" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th style="width: 120px;"> Horario </th>
                             @foreach ($dia_semanas as $value)
                             <th>{{ $value->name }}</th>
                             @endforeach
@@ -37,34 +37,38 @@
                     </thead>
                     <tbody>
                         @php
-                            //print_r($anio);
+                            $hr_inicio = strtotime ( env('HORA_INICIO_CLASES') ) ;
+                            $hr_fin = strtotime ( env('HORA_ACADEMICA'), $hr_inicio ) ;
+                            $hr_inicio = date ( 'H:i' , $hr_inicio);
+                            $hr_fin = date ( 'H:i' , $hr_fin);
                         @endphp
 
-                        @foreach ($grupo_academicos as $value)
+                        @for ($i=0; $i < env('NRO_HORA_ACADEMICA')+1; $i++)
                         <tr>@php
-                            $hr_inicio = strtotime ( env('HORA_INICIO_CLASES') ) ;
-                            $hr_inicio = strtotime ( env('HORA_ACADEMICA'), $hr_inicio ) ;
-                            $hr_inicio = date ( 'H:i' , $hr_inicio);
-                            for ($i=0; $i < env('NRO_HORA_ACADEMICA')+1; $i++){
+                            if ($hr_inicio!=env('HORA_REFRIGERIO')) {
+                                echo '<td>'.$hr_inicio.' - '.$hr_fin.'</td>';
+                                $hr_inicio = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_inicio) ) ;
+                                $hr_inicio = date('H:i',$hr_inicio);
                                 if ($hr_inicio!=env('HORA_REFRIGERIO')) {
-                                    echo '<option value="'.$hr_inicio.'"> '.$hr_inicio.' </option>';
-                                    $hr_inicio = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_inicio) ) ;
-                                    $hr_inicio = date('H:i',$hr_inicio);
+                                    $hr_fin = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_fin) ) ;
+                                    $hr_fin = date ( 'H:i' , $hr_fin);
                                 }else {
-                                    //echo '<option value="'.$hr_inicio.'"> '.$hr_inicio.' </option>';
-                                    $hr_inicio = strtotime ( env('TIEMPO_REFRIGERIO'), strtotime ($hr_inicio) ) ;
-                                    $hr_inicio = date('H:i',$hr_inicio);
+                                    $hr_fin = strtotime ( env('TIEMPO_REFRIGERIO'), strtotime ($hr_fin) ) ;
+                                    $hr_fin = date ( 'H:i' , $hr_fin);
                                 }
-
-                            }@endphp
-                            <td>{{ $value->id }}</td>
-                            <td>{{ $value->name }}</td>
-                            <td>{{ $value->grados->name }}</td>
-                            <td>{{ $value->seccions->name }}</td>
-                            <td>{{ $value->anio_academicos->name }}</td>
-                            <td>{{ $value->created_at }}</td>
+                            }else {
+                                echo '<td>'.$hr_inicio.' - '.$hr_fin.'</td>';
+                                $hr_inicio = strtotime ( env('TIEMPO_REFRIGERIO'), strtotime ($hr_inicio) ) ;
+                                $hr_fin = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_fin) ) ;
+                                $hr_inicio = date('H:i',$hr_inicio);
+                                $hr_fin = date('H:i',$hr_fin);
+                            }
+                            @endphp
+                            @foreach ($dia_semanas as $value)
+                            <td></td>
+                            @endforeach
                         </tr>
-                        @endforeach
+                        @endfor
                     </tbody>
                 </table>
             </div>

@@ -10,7 +10,7 @@
     @csrf
     <div class="">
         <select name="asignar_curso_profesors_id" class="form-control">
-            <option value="">-- grupo --</option>
+            <option value="">-- curso --</option>
             @foreach ($asignar_curso_profesors as $value)
             <option value="{{$value->id}}" {{ $horario->asignar_curso_profesors_id==$value->id ? "selected" : ""}}>{{ $value->cursos->name }}</option>
             @endforeach

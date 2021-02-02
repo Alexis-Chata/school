@@ -232,42 +232,52 @@ return [
                 [
                     'text' => 'Año Academico',
                     'url'  => 'anio_academico/crear',
+                    'active' => ['anio_academico/*', 'regex:@^anio_academico/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Grado',
                     'url'  => 'grado/crear',
+                    'active' => ['grado/*', 'regex:@^grado/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Seccion',
                     'url'  => 'seccion/crear',
+                    'active' => ['seccion/*', 'regex:@^seccion/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Dia Semana',
                     'url'  => 'dia_semana/crear',
+                    'active' => ['dia_semana/*', 'regex:@^dia_semana/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Evaluacion',
                     'url'  => 'evaluacion/crear',
+                    'active' => ['evaluacion/*', 'regex:@^evaluacion/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Curso',
                     'url'  => 'curso/crear',
+                    'active' => ['curso/*', 'regex:@^curso/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Grupo Academico',
                     'url'  => 'grupo_academico/crear',
+                    'active' => ['grupo_academico/*', 'regex:@^grupo_academico/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Matricula',
                     'url'  => 'matricula/crear',
+                    'active' => ['matricula/*', 'regex:@^matricula/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Asignar Curso',
                     'url'  => 'asignar_curso_profesor/crear',
+                    'active' => ['asignar_curso_profesor/*', 'regex:@^asignar_curso_profesor/[0-9]+$@'],
                 ],
                 [
                     'text' => 'Horarios',
                     'url'  => 'horario/',
+                    'active' => ['horario/*', 'regex:@^horario/[0-9]+$@'],
                 ],
             ],
         ],
