@@ -14,7 +14,7 @@
 
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <p><a href="{{route('horario.create')}}">Regresar</a></p>
+            <p><a href="{{route('horario.create', 1)}}">Regresar</a></p>
             @if (session('info'))
                 <div class="alert alert-success">
                     <strong>{{session('info')}}</strong>

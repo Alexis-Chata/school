@@ -30,13 +30,14 @@ class HorarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         $btn_name = 'Registrar';
         $action = route('horario.store');
         $horario = new Horario();
         $horarios = Horario::all();
-        $asignar_curso_profesors = Asignar_curso_profesor::all();
+        $asignar_curso_profesors = Asignar_curso_profesor::where('grupo_academicos_id', $id)->get();
+        //dd($asignar_curso_profesors);
         $dia_semanas = Dia_semana::all();
         $grupo_academicos = Grupo_academico::all();
 
