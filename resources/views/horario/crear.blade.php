@@ -65,10 +65,12 @@
                             }
                             @endphp
                             @foreach ($dia_semanas as $value)
-                                @foreach ($collection as $item)
-
+                                @foreach ($horarios as $item)
+                                    {{-- @if ($item->dia_semanas_id==$value->id)
+                                    <td>{{ $horarios }}</td>
+                                    @endif --}}
+                            <td>{{ $horarios }}</td>
                                 @endforeach
-                            <td></td>
                             @endforeach
                         </tr>
                         @endfor

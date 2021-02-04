@@ -35,7 +35,7 @@ class HorarioController extends Controller
         $btn_name = 'Registrar';
         $action = route('horario.store');
         $horario = new Horario();
-        $horarios = Horario::all();
+        $horarios = Horario::where('id', $id)->dd(); //dd($horarios);
         $asignar_curso_profesors = Asignar_curso_profesor::where('grupo_academicos_id', $id)->get();
         //dd($asignar_curso_profesors);
         $dia_semanas = Dia_semana::all();
