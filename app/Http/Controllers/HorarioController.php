@@ -35,13 +35,14 @@ class HorarioController extends Controller
         $btn_name = 'Registrar';
         $action = route('horario.store');
         $horario = new Horario();
-        $horarios = Horario::where('id', $id)->dd(); //dd($horarios);
-        $asignar_curso_profesors = Asignar_curso_profesor::where('grupo_academicos_id', $id)->get();
+        $horarios = Horario::all(); //dd($horarios);
+        $asignar_curso_profesorsc = Asignar_curso_profesor::where('grupo_academicos_id', $id)->get();
+        $horarios=$horarios->fresh('asignar_curso_profesors'); //dd($fresh);
         //dd($asignar_curso_profesors);
         $dia_semanas = Dia_semana::all();
         $grupo_academicos = Grupo_academico::all();
 
-        return view('horario.crear')->with(compact('btn_name', 'action', 'horario', 'horarios', 'asignar_curso_profesors', 'dia_semanas', 'grupo_academicos'));
+        return view('horario.crear')->with(compact('btn_name', 'action', 'horario', 'horarios', 'asignar_curso_profesorsc', 'dia_semanas', 'grupo_academicos'));
     }
 
     /**

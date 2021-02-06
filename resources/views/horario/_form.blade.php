@@ -11,7 +11,7 @@
     <div class="col-md-2 m-1 p-0">
         <select name="asignar_curso_profesors_id" class="form-control">
             <option value="">-- curso --</option>
-            @foreach ($asignar_curso_profesors as $value)
+            @foreach ($asignar_curso_profesorsc as $value)
             <option value="{{$value->id}}">{{ $value->cursos->name ." - ". $value->users->name ." - ". $value->grupo_academicos->name ." - ". $value->grupo_academicos->grados->name ." - ". $value->grupo_academicos->seccions->name }}</option>
             @endforeach
         </select>

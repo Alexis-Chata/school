@@ -44,38 +44,53 @@
                         @endphp
 
                         @for ($i=0; $i < env('NRO_HORA_ACADEMICA')+1; $i++)
-                        <tr>@php
-                            if ($hr_inicio!=env('HORA_REFRIGERIO')) {
-                                echo '<td>'.$hr_inicio.' - '.$hr_fin.'</td>';
-                                $hr_inicio = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_inicio) ) ;
-                                $hr_inicio = date('H:i',$hr_inicio);
+                            <tr>@php
                                 if ($hr_inicio!=env('HORA_REFRIGERIO')) {
-                                    $hr_fin = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_fin) ) ;
-                                    $hr_fin = date ( 'H:i' , $hr_fin);
+                                    echo '<td>'.$hr_inicio.' - '.$hr_fin.'</td>';
+                                    $hr_inicio = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_inicio) ) ;
+                                    $hr_inicio = date('H:i',$hr_inicio);
+                                    if ($hr_inicio!=env('HORA_REFRIGERIO')) {
+                                        $hr_fin = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_fin) ) ;
+                                        $hr_fin = date ( 'H:i' , $hr_fin);
+                                    }else {
+                                        $hr_fin = strtotime ( env('TIEMPO_REFRIGERIO'), strtotime ($hr_fin) ) ;
+                                        $hr_fin = date ( 'H:i' , $hr_fin);
+                                    }
                                 }else {
-                                    $hr_fin = strtotime ( env('TIEMPO_REFRIGERIO'), strtotime ($hr_fin) ) ;
-                                    $hr_fin = date ( 'H:i' , $hr_fin);
+                                    echo '<td>'.$hr_inicio.' - '.$hr_fin.'</td>';
+                                    $hr_inicio = strtotime ( env('TIEMPO_REFRIGERIO'), strtotime ($hr_inicio) ) ;
+                                    $hr_fin = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_fin) ) ;
+                                    $hr_inicio = date('H:i',$hr_inicio);
+                                    $hr_fin = date('H:i',$hr_fin);
                                 }
-                            }else {
-                                echo '<td>'.$hr_inicio.' - '.$hr_fin.'</td>';
-                                $hr_inicio = strtotime ( env('TIEMPO_REFRIGERIO'), strtotime ($hr_inicio) ) ;
-                                $hr_fin = strtotime ( env('HORA_ACADEMICA'), strtotime ($hr_fin) ) ;
-                                $hr_inicio = date('H:i',$hr_inicio);
-                                $hr_fin = date('H:i',$hr_fin);
-                            }
-                            @endphp
-                            @foreach ($dia_semanas as $value)
-                                @foreach ($horarios as $item)
-                                    {{-- @if ($item->dia_semanas_id==$value->id)
-                                    <td>{{ $horarios }}</td>
-                                    @endif --}}
-                            <td>{{ $horarios }}</td>
+
+                                $td_vacio=0;
+                                @endphp
+
+                                @foreach ($dia_semanas as $value)
+                                    @foreach ($horarios as $item)
+                                        @if ($item->dia_semanas_id==$value->id)
+                                            @if (date('H:i',strtotime($item->hora_fin))==$hr_inicio)
+                                                <td>{!! ucwords($item->asignar_curso_profesors->cursos->name)." <br> ".$item->asignar_curso_profesors->users->name !!}</td>
+                                                @php
+                                                    $td_vacio++;
+                                                @endphp
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                        {!! $td_vacio<sizeof($dia_semanas) ? '<td></td>' : '' !!}
+                                        @php
+                                        $td_vacio++;
+                                        @endphp
                                 @endforeach
-                            @endforeach
-                        </tr>
+                                {{-- <td>{{ $horarios }}</td> --}}
+                            </tr>
                         @endfor
                     </tbody>
                 </table>
+                @for ($i = 1; $i < 256; $i++)
+                    {!! '<p>'.'ping 172.16.1.'.$i.'</p>' !!}
+                @endfor
             </div>
         </div>
     </main>
