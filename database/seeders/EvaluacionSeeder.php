@@ -31,5 +31,20 @@ class EvaluacionSeeder extends Seeder
         $tabla = new Evaluacion();
         $tabla->name = '2do Examen Mensual';
         $tabla->save();
+
+        // 4
+        $tabla = new Evaluacion();
+        $tabla->name = '2do Examen Bimestral';
+        $tabla->save();
+
+        // 5
+        $tabla = new Evaluacion();
+        $tabla->name = '3er Examen Mensual';
+        $tabla->save();
+
+        // 6
+        $tabla = new Evaluacion();
+        $tabla->name = '3er Examen Bimestral';
+        $tabla->save();
     }
 }

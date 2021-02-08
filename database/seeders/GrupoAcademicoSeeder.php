@@ -43,9 +43,9 @@ class GrupoAcademicoSeeder extends Seeder
 
         // 4
         $tabla = new Grupo_academico();
-        $tabla->anio_academicos_id = 3;
+        $tabla->anio_academicos_id = 1;
         $tabla->grados_id = 2;
-        $tabla->seccions_id = 3;
+        $tabla->seccions_id = 2;
         $tabla->name = 108;
         $tabla->save();
 

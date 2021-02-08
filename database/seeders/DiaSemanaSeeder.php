@@ -31,5 +31,15 @@ class DiaSemanaSeeder extends Seeder
         $tabla = new Dia_semana();
         $tabla->name = 'miercoles';
         $tabla->save();
+
+        // 4
+        $tabla = new Dia_semana();
+        $tabla->name = 'jueves';
+        $tabla->save();
+
+        // 5
+        $tabla = new Dia_semana();
+        $tabla->name = 'viernes';
+        $tabla->save();
     }
 }

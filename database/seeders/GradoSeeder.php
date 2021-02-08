@@ -31,5 +31,20 @@ class GradoSeeder extends Seeder
         $tabla = new Grado();
         $tabla->name = '3ro primaria';
         $tabla->save();
+
+        // 4
+        $tabla = new Grado();
+        $tabla->name = '4to primaria';
+        $tabla->save();
+
+        // 5
+        $tabla = new Grado();
+        $tabla->name = '5to primaria';
+        $tabla->save();
+
+        // 6
+        $tabla = new Grado();
+        $tabla->name = '6to primaria';
+        $tabla->save();
     }
 }

@@ -78,7 +78,7 @@
                                             @endif
                                         @endif
                                     @endforeach
-                                        {!! $td_vacio<sizeof($dia_semanas) ? '<td></td>' : '' !!}
+                                        {{-- {!! $td_vacio<sizeof($dia_semanas) ? '<td>-</td>' : '' !!} --}}
                                         @php
                                         $td_vacio++;
                                         @endphp
@@ -88,9 +88,9 @@
                         @endfor
                     </tbody>
                 </table>
-                @for ($i = 1; $i < 256; $i++)
+                {{-- @for ($i = 1; $i < 256; $i++)
                     {!! '<p>'.'ping 172.16.1.'.$i.'</p>' !!}
-                @endfor
+                @endfor --}}
             </div>
         </div>
     </main>
