@@ -76,42 +76,84 @@ class AsignarCursoProfesorSeeder extends Seeder
         // 9
         $tabla = new Asignar_curso_profesor();
         $tabla->users_id = 7;
-        $tabla->cursos_id = 1;
+        $tabla->cursos_id = 9;
         $tabla->grupo_academicos_id = 2;
         $tabla->save();
 
         // 10
         $tabla = new Asignar_curso_profesor();
         $tabla->users_id = 6;
-        $tabla->cursos_id = 2;
+        $tabla->cursos_id = 10;
         $tabla->grupo_academicos_id = 2;
         $tabla->save();
 
         // 11
         $tabla = new Asignar_curso_profesor();
         $tabla->users_id = 5;
-        $tabla->cursos_id = 3;
+        $tabla->cursos_id = 11;
         $tabla->grupo_academicos_id = 2;
         $tabla->save();
 
         // 12
         $tabla = new Asignar_curso_profesor();
         $tabla->users_id = 4;
-        $tabla->cursos_id = 4;
+        $tabla->cursos_id = 12;
         $tabla->grupo_academicos_id = 2;
         $tabla->save();
 
         // 13
         $tabla = new Asignar_curso_profesor();
         $tabla->users_id = 3;
-        $tabla->cursos_id = 5;
+        $tabla->cursos_id = 13;
         $tabla->grupo_academicos_id = 2;
         $tabla->save();
 
         // 14
         $tabla = new Asignar_curso_profesor();
         $tabla->users_id = 2;
-        $tabla->cursos_id = 6;
+        $tabla->cursos_id = 14;
+        $tabla->grupo_academicos_id = 2;
+        $tabla->save();
+
+        // 15
+        $tabla = new Asignar_curso_profesor();
+        $tabla->users_id = 7;
+        $tabla->cursos_id = 9;
+        $tabla->grupo_academicos_id = 2;
+        $tabla->save();
+
+        // 16
+        $tabla = new Asignar_curso_profesor();
+        $tabla->users_id = 6;
+        $tabla->cursos_id = 10;
+        $tabla->grupo_academicos_id = 2;
+        $tabla->save();
+
+        // 17
+        $tabla = new Asignar_curso_profesor();
+        $tabla->users_id = 5;
+        $tabla->cursos_id = 11;
+        $tabla->grupo_academicos_id = 2;
+        $tabla->save();
+
+        // 18
+        $tabla = new Asignar_curso_profesor();
+        $tabla->users_id = 4;
+        $tabla->cursos_id = 12;
+        $tabla->grupo_academicos_id = 2;
+        $tabla->save();
+
+        // 19
+        $tabla = new Asignar_curso_profesor();
+        $tabla->users_id = 3;
+        $tabla->cursos_id = 13;
+        $tabla->grupo_academicos_id = 2;
+        $tabla->save();
+
+        // 20
+        $tabla = new Asignar_curso_profesor();
+        $tabla->users_id = 2;
+        $tabla->cursos_id = 14;
         $tabla->grupo_academicos_id = 2;
         $tabla->save();
     }
